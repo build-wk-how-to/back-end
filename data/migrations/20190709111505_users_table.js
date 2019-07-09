@@ -22,7 +22,13 @@ exports.up = function(knex, Promise) {
   
       table.string('guide_name', 128).notNullable()
       .unique();
-      table.integer('owner').notNullable();
+      table.integer('owner')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('users')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE');
       table.text('guide_content', 500)
       .notNullable();
       table.date('date_created')
@@ -48,6 +54,8 @@ exports.up = function(knex, Promise) {
   
       table.string('category_name', 128).notNullable()
       .unique();
+      table.integer('cat_id')
+      .notNullable();
     })
   };
   
