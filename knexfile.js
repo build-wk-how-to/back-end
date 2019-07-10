@@ -3,9 +3,16 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    // client: 'sqlite3',
+    // connection: {
+    //   filename: './data/db.sqlite3'
+    // },
+    client: 'pg',
     connection: {
-      filename: './data/db.sqlite3'
+      host: 'localhost',
+      database: 'howto',
+      user: 'filler',
+      password: 'filler'
     },
     useNullAsDefault: true,
   
