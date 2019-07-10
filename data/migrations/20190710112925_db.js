@@ -58,10 +58,10 @@ exports.up = function(knex, Promise) {
     .createTable("users", table => {
       table.increments('userID');
       table
-        .string("username", 128)
+        .string("username")
         .notNullable()
         .unique();
-      table.string("password", 128).notNullable();
+      table.string("password").notNullable();
       table.integer("usertype").notNullable();
     })
     .createTable("content", table => {
