@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       filename: './data/db.sqlite3'
     },
-    // client: 'pg',
+    // client: 'mysql',
     // connection: {
     //   host: 'localhost',
     //   database: 'howto',
@@ -29,7 +29,7 @@ production: {
   connection: {
     filename: './data/db.sqlite3'
   },
-  // client: 'pg',
+  // client: 'mysql',
   // connection: {
   //   host: 'localhost',
   //   database: 'howto',
