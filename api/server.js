@@ -79,7 +79,7 @@ server.get('/api/users/:userID/guides', restricted, (req, res) => {
 })
 
 server.get('/api/users/:userID/guides/:guideID', restricted, (req, res) => {
-    db.getGuidesByID(req.params.guideID)
+    db.getGuideByID(req.params.guideID)
         .then(guides => {
             res.status(200).json(guides);
         })
@@ -95,7 +95,7 @@ server.get('/api/guides', restricted, (req, res) => {
 })
 
 server.get('/api/guides/:guideID', restricted, (req, res) => {
-    db.getGuidesByID(req.params.guideID)
+    db.getGuideByID(req.params.guideID)
         .then(guides => {
             res.status(200).json(guides);
         })
@@ -126,7 +126,7 @@ server.post('/api/users/:userID/guides', restricted, (req, res) => {
         .catch(err => res.status(500).send(err))
 })
 
-server.put('/api/guides/:guideID', restricted, (req, res) => {
+server.put('/api/users/:userID/guides/:guideID', restricted, (req, res) => {
     db.updateGuide(req.params.guideID, req.body)
         .then(guides => {
             res.status(200).json(guides);
@@ -134,7 +134,7 @@ server.put('/api/guides/:guideID', restricted, (req, res) => {
         .catch(err => res.status(500).send(err))
 })
 
-server.delete('/api/guides/:guideID', restricted, (req, res) => {
+server.delete('/api/users/:userID/guides/:guideID', restricted, (req, res) => {
     db.deleteGuide(req.params.guideID)
         .then(guides => {
             res.status(200).json(guides);
