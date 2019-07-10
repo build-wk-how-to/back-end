@@ -16,7 +16,7 @@ module.exports = {
 function insertUser(user) {
   return db('users')
     .insert(user)
-    .then(ids => ({ userID: ids[0], username: user.username, password: user.password }));
+    .then(ids => ({ userID: ids[0], username: user.username, password: user.password, usertype: user.usertype }));
 }
 
 function insertGuide(guide){
