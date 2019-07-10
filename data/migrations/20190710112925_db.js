@@ -64,6 +64,10 @@ exports.up = function(knex, Promise) {
       table.string("password").notNullable();
       table.integer("usertype").notNullable();
     })
+    .createTable("category", function(table) {
+      table.increments("categoryID")
+      table.string("categoryname", 128).unique().notNullable();
+    })
     .createTable("content", table => {
       table.increments('guideID')
       table
@@ -71,9 +75,7 @@ exports.up = function(knex, Promise) {
         .notNullable() //forcing a value to be entered
         
       table
-        .foreign("owner")
-        .unsigned()
-        .notNullable()
+        .integer("owner")
         .references("userID") //foreign key referencing the tracks table above - ORDER MATTERS
         .inTable("users")
         .onDelete("CASCADE")
@@ -81,9 +83,7 @@ exports.up = function(knex, Promise) {
       table.text("guidecontent", 500).notNullable();
       table.date("dateposted").notNullable();
       table
-      .foreign("category")
-      .unsigned()
-        .notNullable()
+      .integer("category")
         .references("categoryID")
         .inTable("category")
         .onDelete("CASCADE")
@@ -91,10 +91,7 @@ exports.up = function(knex, Promise) {
     })
 
 
-    .createTable("category", function(table) {
-      table.increments("categoryID")
-      table.string("categoryname", 128).unique().notNullable();
-    });
+
 };
 
 exports.down = function(knex, Promise) {
