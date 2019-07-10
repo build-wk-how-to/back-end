@@ -118,6 +118,30 @@ server.get('/api/category/:categoryID', restricted, (req, res) => {
         .catch(err => res.status(500).send(err))
 })
 
+server.post('/api/users/:userID/guides', restricted, (req, res) => {
+    db.insertGuide(req.body)
+        .then(guides => {
+            res.status(200).json(guides);
+        })
+        .catch(err => res.status(500).send(err))
+})
+
+server.put('/api/guides/:guideID', restricted, (req, res) => {
+    db.updateGuide(req.params.guideID, req.body)
+        .then(guides => {
+            res.status(200).json(guides);
+        })
+        .catch(err => res.status(500).send(err))
+})
+
+server.delete('/api/guides/:guideID', restricted, (req, res) => {
+    db.deleteGuide(req.params.guideID)
+        .then(guides => {
+            res.status(200).json(guides);
+        })
+        .catch(err => res.status(500).send(err))
+})
+
 // server.get('/api/test', (req, res) => {
 //     db.getUsersTest()
 //         .then(users => {
