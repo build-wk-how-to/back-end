@@ -1,0 +1,30 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "back-end for how-to app",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/build-wk-how-to/back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/build-wk-how-to/back-end/issues"
+  },
+  "homepage": "https://github.com/build-wk-how-to/back-end#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "helmet": "^3.18.0",
+    "knex": "^0.18.3",
+    "morgan": "^1.9.1",
+    "server": "^1.0.19",
+    "sqlite3": "^4.0.9"
+  }
+}
