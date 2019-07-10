@@ -1,48 +1,62 @@
 const db = require('../../data/dbConfig.js');
 
 module.exports = {
-  add,
-  update,
-  remove,
-  find,
-  findBy,
-  findById,
+  insertUser,
+  insertGuide,
+  getUserByName,
+  getGuideByID,
+  getCategories,
+  getAllGuides,
+  getGuidesByUser,
+  getGuidesByCategory,
+  updateGuide,
+  deleteGuide
 };
 
-function find() {
-  return db('users').select('id', 'username', 'password', 'usertype');
-}
-
-
-
-function findBy(filter) {
-  return db('users').where(filter);
-}
-
-async function add(user) {
-  const [id] = await db('users').insert(user);
-
-  return findById(id);
-}
-
-function findById(id) {
+function insertUser(user) {
   return db('users')
-    .where({ id })
-    .first();
+    .insert(user)
+    .then(ids => ({ userID: ids[0], username: user.username, password: user.password }));
 }
 
-function remove(id) {
-  return db('users')
-  .where({ id })
-  .del()
-  }
-  function update(body, id) {
-    return db('users')
-    .where({ id })
-    .update(body)
-    }
-
-function find() {
-  return db('content').select('guidename', 'owner', 'guidecontent', 'dateposted', 'category_id');
+function insertGuide(guide){
+  return db('content')
+    .insert(guide)
+    .then(ids => ({ guideID: ids[0],guidename: guide.guidename, owner: guide.owner, guidecontent: guide.guidecontent, dateposted: guide.dateposted, category: guide.category }))
 }
-  
+
+function getUserByName(name) {
+  return db('users').where({ username: name }).first();
+}
+
+function getGuideByID(id){
+  return db('content').where({ guideID: id }).first();
+}
+
+function getAllGuides(){
+  return db('content');
+}
+
+function getGuidesByUser(userID) {
+  return db('content').where({owner: userID});
+}
+
+function getGuidesByCategory(catID){
+  return db('content').where({ categoryID: catID});
+}
+
+function getCategories(){
+  return db('categories');
+}
+
+function updateGuide(id, update){
+  return db('content')
+    .where({guideID: id})
+    .update(update);
+}
+
+function deleteGuide(id){
+  return db('content')
+    .where({guideID: id})
+    .del();
+}

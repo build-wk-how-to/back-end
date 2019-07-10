@@ -19,11 +19,17 @@
   },
   "homepage": "https://github.com/build-wk-how-to/back-end#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "helmet": "^3.18.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.18.3",
     "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
+    "node": "^12.6.0",
+    "nodemon": "^1.19.1",
+    "pg": "^7.11.0",
     "server": "^1.0.19",
     "sqlite3": "^4.0.9"
   }
