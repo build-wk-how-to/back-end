@@ -18,14 +18,20 @@ module.exports = {
   }
 },
 production: {
-  client: 'sqlite3',
+  client: 'pg',
   connection: {
-    filename: './data/db.sqlite3'
+    host: 'localhost',
+    database: 'howto',
+    user: 'filler',
+    password: 'filler'
   },
   useNullAsDefault: true,
   migrations: {
     directory: './data/migrations',
-  }
+  },
+  seeds: {
+    directory: './data/seeds',
+  },
 }
 
 };

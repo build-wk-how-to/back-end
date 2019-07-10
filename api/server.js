@@ -15,7 +15,7 @@ const server = express();
 server.use(express.json());
 server.use(helmet());
 server.use(morgan('dev'));
-server.use(cors());
+server.use(cors({credentials: true, origin: true}));
 
 const secret = process.env.TOKEN_SECRET || 'idk lol';
 
