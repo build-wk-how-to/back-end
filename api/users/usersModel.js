@@ -49,7 +49,7 @@ function getGuidesByCategory(catID){
 }
 
 function getCategories(){
-  return db('categories');
+  return db('category');
 }
 
 function updateGuide(id, update){
