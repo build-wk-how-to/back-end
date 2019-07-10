@@ -12,13 +12,13 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('content').insert([
-        { guideID: 1, guidename: 'How to build a treehouse', owner: 1, guidecontent: 'oijwaoisjoijaoiwjf[ij[aijdoi[jfoijwaoif[ijaoijijsoijdojoijojojojoj', dateposted: 'July 9, 2019', categoryID: 1 },
+        { guideID: 1, guidename: 'How to build a treehouse', owner: 1, guidecontent: 'oijwaoisjoijaoiwjf[ij[aijdoi[jfoijwaoif[ijaoijijsoijdojoijojojojoj', dateposted: '2019-07-07', category: 1 },
         { guideID: 2, guidename: 'What to do in a hurricane', owner: 2, guidecontent: 'oijwaoisjoijaoiwjf[ij[aijdoi[jfoijwaoif[ijaoijijsoijdojoijojojojoj', 
-        dateposted: 'July 9, 2019',
-        categoryID: 2 },
+        dateposted: '2015-05-05',
+        category: 2 },
         { guideID: 3, guidename: 'When you are not expecting', owner: 3, guidecontent: 'oijwaoisjoijaoiwjf[ij[aijdoi[jfoijwaoif[ijaoijijsoijdojoijojojojoj',
-        dateposted: 'July 9, 2019',
-        categoryID: 3 }
+        dateposted: '2023-04-29',
+        category: 3 }
       ]);
     })
     .then(function () {
