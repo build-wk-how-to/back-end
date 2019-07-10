@@ -5,10 +5,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      filename: './data/users.db3',
-      port: 5433,
-      user:     '',
-      password: 'password'
+      database: 'db'
     },
     useNullAsDefault: true,
   
@@ -20,4 +17,15 @@ module.exports = {
     directory: './data/seeds'
   }
 },
+production: {
+  client: 'pg',
+  connection: {
+    database: 'db'
+  },
+  useNullAsDefault: true,
+  migrations: {
+    directory: './data/migrations',
+  }
+}
+
 };
