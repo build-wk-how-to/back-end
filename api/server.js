@@ -70,13 +70,61 @@ server.post('/api/login', (req, res) => {
       });
 });
 
-server.get('/api/test', (req, res) => {
-    db.getUsersTest()
-        .then(users => {
-            res.status(201).json(users)
+server.get('/api/users/:userID/guides', restricted, (req, res) => {
+    db.getGuidesByUser(req.params.userID)
+        .then(guides => {
+            res.status(200).json(guides);
         })
-        .catch(err => {res.status(500).json(err)});
+        .catch(err => res.status(500).send(err))
 })
+
+server.get('/api/users/:userID/guides/:guideID', restricted, (req, res) => {
+    db.getGuidesByID(req.params.guideID)
+        .then(guides => {
+            res.status(200).json(guides);
+        })
+        .catch(err => res.status(500).send(err))
+})
+
+server.get('/api/guides', restricted, (req, res) => {
+    db.getAllGuides()
+        .then(guides => {
+            res.status(200).json(guides);
+        })
+        .catch(err => res.status(500).send(err))
+})
+
+server.get('/api/guides/:guideID', restricted, (req, res) => {
+    db.getGuidesByID(req.params.guideID)
+        .then(guides => {
+            res.status(200).json(guides);
+        })
+        .catch(err => res.status(500).send(err))
+})
+
+server.get('/api/categories', restricted, (req, res) => {
+    db.getCategories()
+        .then(categories => {
+            res.status(200).json(categories);
+        })
+        .catch(err => res.status(500).send(err))
+})
+
+server.get('/api/category/:categoryID', restricted, (req, res) => {
+    db.getGuidesByCategory(req.params.categoryID)
+        .then(guides => {
+            res.status(200).json(guides);
+        })
+        .catch(err => res.status(500).send(err))
+})
+
+// server.get('/api/test', (req, res) => {
+//     db.getUsersTest()
+//         .then(users => {
+//             res.status(201).json(users)
+//         })
+//         .catch(err => {res.status(500).json(err)});
+// })
 
 // server.get('/api/users', async (req, res) => {
 //   try {
