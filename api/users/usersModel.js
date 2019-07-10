@@ -13,6 +13,8 @@ function find() {
   return db('users').select('id', 'username', 'password', 'usertype');
 }
 
+
+
 function findBy(filter) {
   return db('users').where(filter);
 }
@@ -34,9 +36,13 @@ function remove(id) {
   .where({ id })
   .del()
   }
-
   function update(body, id) {
     return db('users')
     .where({ id })
     .update(body)
     }
+
+function find() {
+  return db('content').select('guidename', 'owner', 'guidecontent', 'dateposted', 'category_id');
+}
+  
