@@ -34,7 +34,7 @@ function generateToken(user){
 }
 
 server.post('/api/register', (req, res) => {
-  let user = req.body;
+  let user = {username: req.body.username, password: req.body.password, usertype: req.body.usertype}
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
 
