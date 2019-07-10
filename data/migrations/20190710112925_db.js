@@ -56,45 +56,42 @@ exports.up = function(knex, Promise) {
 
   return knex.schema
     .createTable("users", table => {
-      table.increments();
+      table.increments('userID');
       table
-        .string("username", 128)
+        .string("username")
         .notNullable()
         .unique();
-      table.string("password", 128).notNullable();
-      table.string("usertype", 128).notNullable();
+      table.string("password").notNullable();
+      table.integer("usertype").notNullable();
+    })
+    .createTable("category", function(table) {
+      table.increments("categoryID")
+      table.string("categoryname", 128).unique().notNullable();
     })
     .createTable("content", table => {
-      table.integer('guide_id')
+      table.increments('guideID')
       table
         .string("guidename", 128)
         .notNullable() //forcing a value to be entered
         
       table
         .integer("owner")
-        .unsigned()
-        .notNullable()
-        .references("id") //foreign key referencing the tracks table above - ORDER MATTERS
+        .references("userID") //foreign key referencing the tracks table above - ORDER MATTERS
         .inTable("users")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
       table.text("guidecontent", 500).notNullable();
       table.date("dateposted").notNullable();
       table
-      .integer("category_id")
-      .unsigned()
-        .notNullable()
-       .references("id")
+      .integer("category")
+        .references("categoryID")
         .inTable("category")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
     })
 
 
-    .createTable("category", function(table) {
-      table.integer("category_id")
-      table.string("categoryname", 128).notNullable();
-    });
+
 };
 
 exports.down = function(knex, Promise) {
