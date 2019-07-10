@@ -10,7 +10,8 @@ module.exports = {
   getGuidesByUser,
   getGuidesByCategory,
   updateGuide,
-  deleteGuide
+  deleteGuide,
+  getUsersTest
 };
 
 function insertUser(user) {
@@ -61,4 +62,8 @@ function deleteGuide(id){
   return db('content')
     .where({guideID: id})
     .del();
+}
+
+function getUsersTest(){
+  return db('users');
 }

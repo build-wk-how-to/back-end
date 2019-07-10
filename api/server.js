@@ -70,7 +70,13 @@ server.post('/api/login', (req, res) => {
       });
 });
 
-
+server.get('/api/test', (req, res) => {
+    db.getUsersTest()
+        .then(users => {
+            res.status(201).json({body: req.body, users: users})
+        })
+        .catch(err => {res.status(500).json(err)});
+})
 
 // server.get('/api/users', async (req, res) => {
 //   try {
